@@ -43,5 +43,7 @@ module R3a2
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password, :auth_token]
+
+    ::ActiveRecord::Base.include_root_in_json = false 
   end
 end
