@@ -1,4 +1,4 @@
-R3api::Application.routes.draw do
+R3a2::Application.routes.draw do
   get "home/index"
 
   devise_for :users
