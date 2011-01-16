@@ -4,4 +4,26 @@ class ApplicationController < ActionController::Base
   respond_to :html
 
   before_filter :authenticate_user!
+  before_filter :set_current_user
+  
+  rescue_from Authorization::NotAuthorized do |exception|
+    respond_to do |wants|
+      wants.html { flash[:alert] = exception.message; redirect_to root_url }
+      wants.any(:xml, :json) { render :status => :forbidden, :text => exception.message, :layout => false}
+    end
+  end
+  
+  def permission_denied
+    flash[:error] = 'Sorry, you are not allowed to the requested page.'
+    respond_to do |format|
+      format.html { redirect_to(:back) rescue redirect_to('/') }
+      format.xml  { head :unauthorized }
+      format.js   { head :unauthorized }
+    end
+  end
+  
+  protected
+  def set_current_user
+    Authorization.current_user = current_user
+  end
 end
