@@ -1,0 +1,4 @@
+<%=
+hash = @user.as_json.merge(:password => nil, :password_conformation => nil)
+hash.to_json.html_safe
+%>

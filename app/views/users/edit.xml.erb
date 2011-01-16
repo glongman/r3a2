@@ -1,0 +1,6 @@
+<%= 
+@user.to_xml do |builder|
+  builder.tag!(:password) { "" }
+  builder.tag!(:password_confirmation) { "" }
+end.html_safe  
+%>
