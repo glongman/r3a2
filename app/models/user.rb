@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   API_DEFAULT_ATTRIBUTES = %w(id login role email name locked_at).map(&:to_sym).freeze
+  ALLOWED_ROLES = %(admin api normal).freeze
+  
   devise :token_authenticatable, :database_authenticatable, :validatable, :recoverable, :trackable, :lockable
            
   # Setup accessible (or protected) attributes for your model
@@ -7,7 +9,8 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :login, :allow_nil=>true
   validates_format_of :login, :with => /^[^@\s]*$/i, :message => "You can't have @ or spaces in your login" # Logins cannot have @ symbols or spaces
-
+  validates_inclusion_of :role, :in => ALLOWED_ROLES
+  
   attr_reader :was_authenticated_by_token
   
   # Case insensitive login/email
