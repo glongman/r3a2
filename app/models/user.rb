@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  API_DEFAULT_ATTRIBUTES = %w(id login role email name locked_at).map(&:to_sym).freeze
   devise :token_authenticatable, :database_authenticatable, :validatable, :recoverable, :trackable, :lockable
            
   # Setup accessible (or protected) attributes for your model
@@ -31,7 +32,6 @@ class User < ActiveRecord::Base
     @was_authenticated_by_token
   end
   
-  API_DEFAULT_ATTRIBUTES = %w(id login role email name locked_at).map(&:to_sym).freeze
   def as_json_with_filter(*args, &block)
     options = args.extract_options!
     options[:only] = API_DEFAULT_ATTRIBUTES if options.empty?
