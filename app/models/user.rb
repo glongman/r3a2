@@ -52,4 +52,8 @@ class User < ActiveRecord::Base
   end
   alias_method_chain :to_xml, :filter
   
+  # role?
+  def api?; self.role == "api"  end
+  
+  def admin?; self.role == "admin" end
 end
