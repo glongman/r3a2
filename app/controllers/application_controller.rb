@@ -14,11 +14,12 @@ class ApplicationController < ActionController::Base
   end
   
   def permission_denied
-    flash[:error] = 'Sorry, you are not allowed to the requested page.'
-    respond_to do |format|
-      format.html { redirect_to(:back) rescue redirect_to('/') }
-      format.xml  { head :unauthorized }
-      format.js   { head :unauthorized }
+    respond_to do |wants|
+      wants.html { 
+        flash[:error] = 'Sorry, you are not allowed to the requested page.'
+        redirect_to(:back) rescue redirect_to('/') 
+      }
+      wants.any(:xml, :json) { render :status => :forbidden, :text => 'forbidden', :layout => false}
     end
   end
   
