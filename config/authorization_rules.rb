@@ -33,7 +33,7 @@ privileges do
   privilege :crud do
     includes :create, :show, :update, :delete
   end
-  privilege :manage_locks do
+  privilege :manage_locks, :user do
     includes :lock_user, :unlock_user
   end
 end
