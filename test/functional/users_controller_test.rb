@@ -1,34 +1,43 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
-  test "should get index" do
+  
+  def setup
+    @admin = Factory :admin_user
+    @api = Factory :api_user
+    @normal = Factory :normal_user
+    5.times {Factory :normal_user}
+  end
+  
+  def teardown
+    User.delete_all
+  end
+  
+  def test_index_not_logged_in
+    get :index
+    assert_response 401
+  end
+  
+  def test_index_as_admin
+    sign_in @admin
     get :index
     assert_response :success
+    assert_equal User.count, assigns(:users).size
   end
-
-  test "should get show" do
-    get :show
+  
+  def test_index_as_api
+    sign_in @api
+    get :index
     assert_response :success
+    assert_equal 6, assigns(:users).size
+    assert_equal 0, assigns(:users).to_a.count(&:admin?)
+    assert_equal 0, assigns(:users).to_a.count(&:api?)
   end
-
-  test "should get new" do
-    get :new
-    assert_response :success
+  
+  def test_index_as_normal
+    sign_in @normal
+    get :index
+    assert_response :forbidden
   end
-
-  test "should get create" do
-    get :create
-    assert_response :success
-  end
-
-  test "should get update" do
-    get :update
-    assert_response :success
-  end
-
-  test "should get delete" do
-    get :delete
-    assert_response :success
-  end
-
+  
 end
