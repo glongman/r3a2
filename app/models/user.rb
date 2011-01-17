@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   before_validation do
     self.email = self.email.downcase if self.email
     self.login = self.login.downcase if self.login
-    self.locked_at = nil if self.role = 'admin'
+    self.locked_at = nil if self.role == 'admin'
   end
 
   def self.find_for_database_authentication(conditions)
