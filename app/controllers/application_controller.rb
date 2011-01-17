@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   respond_to :html
 
   before_filter :authenticate_user!
-  before_filter :set_current_user
+  before_filter :set_user_for_authorization
   
   rescue_from Authorization::NotAuthorized do |exception|
     respond_to do |wants|
@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
   
   protected
-  def set_current_user
+  def set_user_for_authorization
     Authorization.current_user = current_user
   end
 end
