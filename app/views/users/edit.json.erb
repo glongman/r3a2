@@ -1,4 +1,5 @@
 <%=
 hash = @user.as_json.merge(:password => nil, :password_conformation => nil)
+hash.merge!(:url => user_url(@user)) unless user.new_record?
 hash.to_json.html_safe
 %>
