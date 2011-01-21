@@ -32,7 +32,7 @@ class UsersController < ApiBase
   end
   
   def show_lock
-    respond_with @user, :template => 'lock'
+    respond_with @user
   end
   
   def unlock
