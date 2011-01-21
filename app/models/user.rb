@@ -35,11 +35,11 @@ class User < ActiveRecord::Base
     @was_authenticated_by_token
   end
   
-  def as_json_with_filter(*args, &block)
-    options = args.extract_options!
-    options[:only] = API_DEFAULT_ATTRIBUTES if options.empty?
-    args << options
-    as_json_without_filter(*args, &block)
+  def as_json_with_filter(options = nil, &block)
+    options = {:only => API_DEFAULT_ATTRIBUTES} if options.blank? || options.keys.select {|i| [:only,:except, :methods, :include].include?(i)}.empty?
+    json = as_json_without_filter(options)
+    yield json if block_given?
+    json
   end
   alias_method_chain :as_json, :filter
   
