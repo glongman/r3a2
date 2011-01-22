@@ -45,3 +45,14 @@ class UsersController < ApiBase
   end
 
 end
+
+# lock_user GET    /users/:id/lock(.:format)                     {:controller=>"users", :action=>"show_lock"}
+#           PUT    /users/:id/lock(.:format)                     {:controller=>"users", :action=>"lock"}
+#           DELETE /users/:id/lock(.:format)                     {:controller=>"users", :action=>"unlock"}
+#     users GET    /users(.:format)                              {:controller=>"users", :action=>"index"}
+#           POST   /users(.:format)                              {:controller=>"users", :action=>"create"}
+#  new_user GET    /users/new(.:format)                          {:controller=>"users", :action=>"new"}
+# edit_user GET    /users/:id/edit(.:format)                     {:controller=>"users", :action=>"edit"}
+#      user GET    /users/:id(.:format)                          {:controller=>"users", :action=>"show"}
+#           PUT    /users/:id(.:format)                          {:controller=>"users", :action=>"update"}
+#           DELETE /users/:id(.:format)                          {:controller=>"users", :action=>"destroy"}
