@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   
   devise :token_authenticatable, :database_authenticatable, :validatable, :recoverable, :trackable, :lockable
            
+  has_many :players
+  
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :login, :role, :name
 
