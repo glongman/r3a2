@@ -10,7 +10,7 @@ class UsersController < ApiBase
   end
 
   def new
-    respond_with( @user = User.new, :template => 'edit')
+    respond_with(@user = User.new, :template => 'edit')
   end
   
   def edit
@@ -18,8 +18,7 @@ class UsersController < ApiBase
   end
 
   def create
-    @user.update_attributes params[:user]
-    respond_with @user
+    respond_with User.create(params[:user])
   end
 
   def update
