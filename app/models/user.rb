@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  API_DEFAULT_ATTRIBUTES = %w(id login role email name locked_at).map(&:to_sym).freeze
   ALLOWED_ROLES = %(admin api normal).freeze
   
   devise :token_authenticatable, :database_authenticatable, :validatable, :recoverable, :trackable, :lockable
@@ -31,29 +30,7 @@ class User < ActiveRecord::Base
   def role_symbols
     [role.to_sym] rescue []
   end
-  
-  # set a flag
-  def after_authentication_by_token
-    @was_authenticated_by_token
-  end
-  
-  def as_json_with_filter(options = nil, &block)
-    options = {:only => API_DEFAULT_ATTRIBUTES} if options.blank? || options.keys.select {|i| [:only,:except, :methods, :include].include?(i)}.empty?
-    json = as_json_without_filter(options)
-    yield json if block_given?
-    json
-  end
-  alias_method_chain :as_json, :filter
-  
-  def to_xml_with_filter(*args, &block)
-    options = args.extract_options! # throw away any options
-    options[:only] = API_DEFAULT_ATTRIBUTES unless options[:only] || options[:except]
-    options[:skip_types] = true
-    args << options
-    to_xml_without_filter(*args, &block)
-  end
-  alias_method_chain :to_xml, :filter
-  
+    
   # role?
   def api?; self.role == "api"  end
   
