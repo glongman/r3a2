@@ -1,0 +1,3 @@
+<%=
+@users.collect {|u| as_user_json u}.to_json.html_safe
+%>

@@ -1,0 +1,1 @@
+user_xml @user, :builder => xml
