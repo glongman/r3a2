@@ -1,4 +1,5 @@
 class UsersController < ApiBase
+  before_filter :role_update_auth, :only => :update
   filter_resource_access
   filter_access_to [:show_lock, :lock, :unlock], :attribute_check => true
   def index
@@ -18,15 +19,17 @@ class UsersController < ApiBase
   end
 
   def create
-    respond_with User.create(params[:user])
+    @user.save
+    respond_with @user
   end
 
   def update
+    params[:user].merge!(:password_confirmation => params[:user][:password]) if params[:user] && params[:user][:password]
     @user.update_attributes params[:user]
     respond_with @user
   end
 
-  def delete
+  def destroy
     respond_with @user.destroy
   end
   
@@ -42,6 +45,27 @@ class UsersController < ApiBase
   def lock
     @user.lock_access!
     respond_with @user
+  end
+  
+  protected
+  
+  def new_user_from_params
+    params[:user].merge!(:password_confirmation => params[:user][:password]) if params[:user] && params[:user][:password]
+    @user = User.new params[:user]
+  end
+  
+  def role_update_auth
+    # getting here means current_user can update
+    # but, is the role value supplied, if any, allowed?
+    requested_role = params[:user][:role] if params[:user]
+    return unless requested_role
+    allowed = true
+    if has_role? :admin
+      allowed = false unless requested_role == 'admin'
+    else
+      allowed = false
+    end
+    raise Authorization::NotAuthorized, "Authorized user can't update user role to #{requested_role.inspect}" unless allowed
   end
 
 end
