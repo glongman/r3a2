@@ -3,7 +3,7 @@
 Factory.define :user do |f|
   f.sequence(:email)      {|n| "user#{n}@example.com" }
   f.sequence(:login)      {|n| "user#{n}" }
-  f.sequence(:name)       {|n| "user#{n}.titleize"}
+  f.sequence(:name)       {|n| "user#{n}".titleize}
   f.password              {"password"}
   f.password_confirmation {"password"}
 end
