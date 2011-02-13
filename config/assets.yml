@@ -1,0 +1,21 @@
+embed_assets: on
+
+javascript_compressor: closure
+compressor_options:
+  compilation_level: "WHITESPACE_ONLY"
+javascripts:
+  program:
+    - public/javascripts/vendor/jquery*.js
+    - public/javascripts/vendor/underscore*.js
+    - public/javascripts/vendor/json*.js
+    - public/javascripts/vendor/*.js
+    - public/javascripts/*.js
+    - app/views/program/*.jst
+    
+stylesheets:
+    baseline:
+      - public/stylesheets/baseline.css
+    login:
+      - public/stylesheets/login.css
+      
+    

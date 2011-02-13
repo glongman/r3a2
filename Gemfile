@@ -7,6 +7,7 @@ gem "responders"
 gem "devise"
 gem "declarative_authorization"
 gem "backpocket", :git => "git://github.com/jduff/backpocket.git"
+gem "jammit"
 
 group :development do
   gem "rails3-generators"

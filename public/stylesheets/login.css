@@ -1,0 +1,60 @@
+.login_page #topbar.header {
+  background-color:#D7D7D7;
+  -moz-box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 5px 75px rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid #979797;
+  width:100%;
+  /*
+  -moz-border-radius: 0 0 5px 5px;
+  -webkit-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+  */
+}
+
+.login_dialog {
+  max-width:none;
+  width:500px;
+  position:relative;
+  top:100px;
+  left:50px;
+}
+
+.login_page .dialog .line {
+  width: 450px;
+}
+
+#login_form div.text_input {
+  display:block;
+  margin: 0 0 0 125px;
+  position: absolute;
+  width: 280px;
+}
+
+.login_page label {
+  color: #444;
+  display:block;
+  font-family:Arial;
+  font-size:16px;
+  font-size-adjust:none;
+  font-stretch:normal;
+  font-style:normal;
+  font-variant:normal;
+  font-weight:bold;
+  line-height:14px !important;
+  text-align:right;
+  text-shadow: 0 1px 1px #FFF;
+  width: 110px;
+}
+
+.login_page .example {
+color:#666666;
+font-family:Arial;
+font-size:11px;
+font-size-adjust:none;
+font-stretch:normal;
+font-style:italic;
+font-variant:normal;
+font-weight:bold;
+line-height:normal;
+}

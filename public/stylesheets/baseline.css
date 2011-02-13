@@ -1,0 +1,267 @@
+html,body,div,span,applet,object,iframe,
+h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,
+abbr,acronym,address,big,cite,code,del,dfn,
+em,font,img,ins,kbd,q,s,samp,small,strike,
+strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,
+fieldset,form,label,legend,table,caption,tbody,
+tfoot,thead,tr,th,td {
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-weight:inherit;
+  font-style:inherit;
+  font-size:100%;
+  font-family:inherit;
+  vertical-align:baseline;
+}
+
+a {
+  color:inherit;
+  text-decoration:none;
+}
+
+strong {
+  font-weight:bold;
+}
+
+:focus {
+  outline-style:none;
+  outline-width:none;
+}
+
+body {
+  /*background:url(/images/bkrd_dots.png);*/
+  color:black;
+  line-height:1;
+}
+
+ol,ul {
+  list-style-image:none;
+  list-style-position:none;
+  list-style-type:none;
+}
+
+table {
+  border-collapse:collapse;
+  border-spacing:0;
+}
+
+caption,th,td{
+  font-weight:normal;
+  text-align:left;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+}
+
+blockquote, q {
+  quotes: "" "";
+}
+
+label {
+  cursor: pointer;
+}
+
+.serif {
+  font-family: "Palatino Linotype", "Book Antiqua",Palatino,FreeSerif,serif;
+}
+
+.iface, .dialog, input, .text_area {
+  font-family: "Lucida Grande", "Lucida Sans Unicode",Helvetica,Arial,sans-serif !important;
+}
+
+.iface_fallback, .mbutton, .tab {
+  font-family: "Lucida Grande", Helvetica,Arial,sans-serif !important;
+}
+
+.hidden {
+  display:none !important;
+}
+
+.clear {
+  clear:both;
+}
+
+select {
+  font-size:11px;
+  height:20px;
+}
+
+.selectable_text {
+  cursor:text;
+}
+
+.float_left {
+  float:left;
+}
+
+.float_right {
+  float:right;
+}
+
+input.hidden_submit {
+  display:block;
+  height:0;
+  position:absolute;
+  visibility:hidden;
+  width:0;
+  z-index:-10;
+}
+
+#container {
+  overflow:hidden;
+}
+
+#topbar {
+  display:block;
+  height:40px;
+}
+
+#content {
+  margin: 70px 20px 20px;
+  position:relative;
+}
+
+.gradient_light {
+	/* For WebKit (Safari, Google Chrome etc) */
+	background: -webkit-gradient(linear, left top, left bottom, from(#E3E3E3), to(#CDCDCD));
+	/* For Mozilla/Gecko (Firefox etc) */
+	background: -moz-linear-gradient(top, #E3E3E3, #CDCDCD);
+	/* For Internet Explorer 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#E3E3E3, endColorstr=#CDCDCD);
+	/* For Internet Explorer 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#E3E3E3, endColorstr=#CDCDCD)";
+}
+
+.dragging .gradient_light {
+  background: #E3E3E3;
+}
+
+.gradient_medium {
+	/* For WebKit (Safari, Google Chrome etc) */
+	background: -webkit-gradient(linear, left top, left bottom, from(#D7D7D7), to(#969696));
+	/* For Mozilla/Gecko (Firefox etc) */
+	background: -moz-linear-gradient(top, #D7D7D7, #969696);
+	/* For Internet Explorer 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#D7D7D7, endColorstr=#969696);
+	/* For Internet Explorer 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#D7D7D7, endColorstr=#969696)";
+}
+
+.dragging .gradient_medium {
+  background: #EDEDED;  
+}
+
+
+.dialog {
+  color: black;
+  max-width:600px;
+  min-width:300px;
+  padding: 14px 30px 14px;
+  position:absolute;
+  text-align:center;
+  z-index:1000;
+}
+
+div.dialog_background {
+  background: #EDEDED;  
+  -moz-box-shadow: 1px 2px 7px #333333;
+  -webkit-box-shadow: 1px 2px 7px #333333;
+  box-shadow: 1px 2px 7px #333333;
+  -moz-border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  z-index:-1;
+}
+
+.dragging,
+.dragging > * {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.dragging > .content {
+  visibility:hidden;
+}
+
+.dialog .title {
+font-size:16px;
+margin-bottom:12px;
+text-align:left;
+}
+
+.dialog .information {
+  font-size:10px;
+  position:absolute;
+  right:30px;
+  top:18px;
+}
+
+.dialog .title_background {
+  -moz-border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  background-color:#A8A8A8;
+  position:absolute;
+  top:0;
+  right:0;
+  left:0;
+  height:42px;
+  z-index: -1;
+  border-bottom:1px solid #515151;
+}
+
+.dialog .line {
+  margin:30px auto;
+  width: 400px;
+}
+
+.dialog .controls {
+  margin-top:30px;
+  position:relative;
+  text-align:center;
+}
+
+div.text_input {
+  display:block;
+  height:30px;
+  position:relative;
+  /* background image */
+}
+
+div.text_input .background {
+  /* background image */
+  height:30px;
+  margin-left:6px;
+}
+
+div.text_input .inner {
+  left:4px;
+  position: absolute;
+  right: 10px;
+  top: 2px;
+}
+
+div.text_input input {
+  /* background */
+  border: medium none;
+  display:block;
+  font-size:16px;
+  line-height:20px;
+  margin:0;
+  outline-color: -moz-user-text-color;
+  outline-style: none;
+  outline-width: medium;
+  padding:4px;
+  width:100%;
+}
+}
