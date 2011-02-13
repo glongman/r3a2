@@ -3,7 +3,8 @@ class CreatePlayers < ActiveRecord::Migration
     create_table :players do |t|
       t.integer :user_id
       t.string :name
-      t.lockable :lock_strategy => :none, :unlock_strategy => :noneß
+      t.string :email
+      t.lockable :lock_strategy => :none, :unlock_strategy => :none
       t.timestamps
     end
   end

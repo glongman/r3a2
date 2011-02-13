@@ -10,5 +10,5 @@ class Player < ActiveRecord::Base
   validates_format_of     :email, :with  => /^([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})$/i, :allow_blank => true
   
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :name
+  attr_accessible :name, :email
 end

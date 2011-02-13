@@ -1,6 +1,9 @@
 require 'test_helper'
 require 'builder'
+require 'json'
+require 'app/helpers/application_helper'
 class UsersHelperTest < ActionView::TestCase
+  include ApplicationHelper
   def setup
     @user = Factory :admin_user
     @default_keys = UsersHelper::USER_API_DEFAULT_ATTRIBUTES.collect(&:to_s) << 'url'
@@ -81,6 +84,12 @@ class UsersHelperTest < ActionView::TestCase
     xml = lock_xml Builder::XmlMarkup.new
     hash = Hash.from_xml(xml)['lock']
     assert_equal({'locked_at' => time.as_json, 'user' => user_path(@user, :format => :xml)}, hash)
+  end
+  
+  protected
+  
+  def as_user_json(user=@user)
+    JSON::parse user_json(user)
   end
   
 end

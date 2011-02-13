@@ -1,0 +1,1 @@
+model_xml @score, :builder => xml

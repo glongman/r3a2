@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(:version => 20110122185021) do
   create_table "players", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"
+    t.string   "email"
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
